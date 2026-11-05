@@ -64,6 +64,11 @@ python -m venv .venv
 
 На Linux и macOS вместо `.venv/Scripts/python` используйте `.venv/bin/python`.
 
+## История проекта
+
+1. **Первая версия: учебный прототип на синтетических данных.** Отказ в ней задан правилом по тем же показаниям, которые получает модель, поэтому высокие метрики ничего не говорили о предсказании реальных отказов. Код лежит в [legacy/](legacy/), а весь репозиторий в том виде можно открыть по метке [v1-synthetic](https://github.com/v94e92-prog/industrial-predictive-maintenance/tree/v1-synthetic).
+2. **Текущая версия: реальные данные MetroPT-3.** Тестируемый пакет, проверка по времени, оценка по событиям и контроль качества данных.
+
 ## Источник данных
 
 Veloso B., Ribeiro R.P., Pereira P.M., Gama J. The MetroPT dataset for predictive maintenance. *Scientific Data* 9, 764 (2022). DOI: 10.1038/s41597-022-01877-3. Сами данные в репозиторий не входят.

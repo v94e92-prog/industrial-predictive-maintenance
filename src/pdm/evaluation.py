@@ -63,6 +63,7 @@ class EventResult:
     delays_min: dict[int, float | None]  # отказ -> минуты от начала до тревоги (минус = заранее)
     false_episodes: list[tuple]
     eval_days: float
+    total_episodes: int = 0  # все эпизоды тревог: на каждый нужен осмотр
 
     @property
     def caught(self) -> int:
@@ -87,13 +88,15 @@ def score_events(alarms: pd.Series, failures: tuple[Failure, ...]) -> EventResul
             first <= f.end + MATCH_AFTER and last >= f.start - MATCH_BEFORE for f in failures
         )
 
-    false = [e for e in alarm_episodes(alarms) if not related(e)]
-    return EventResult(delays, false, len(alarms) / (BARS_PER_HOUR * 24))
+    episodes = alarm_episodes(alarms)
+    false = [e for e in episodes if not related(e)]
+    return EventResult(delays, false, len(alarms) / (BARS_PER_HOUR * 24), len(episodes))
 
 
 def walk_forward(features: pd.DataFrame, failures: tuple[Failure, ...], model_cls,
                  quantile: float = 0.995,
-                 fold_starts: tuple[pd.Timestamp, ...] = FOLD_STARTS) -> tuple[pd.Series, dict]:
+                 fold_starts: tuple[pd.Timestamp, ...] = FOLD_STARTS,
+                 confirm_bars: int = CONFIRM_BARS) -> tuple[pd.Series, dict]:
     """Каждый месяц обучаемся только на прошлом и проверяем на следующем месяце.
 
     Метки в обучении обрезаны на горизонт до границы, чтобы не подсмотреть будущий отказ.
@@ -123,5 +126,5 @@ def walk_forward(features: pd.DataFrame, failures: tuple[Failure, ...], model_cl
         test_valid = test_index[valid.loc[test_index].to_numpy()]
         scores = pd.Series(np.nan, index=test_index)
         scores.loc[test_valid] = model.score(features.loc[test_valid])
-        pieces.append(confirmed_alarms(scores, threshold))
+        pieces.append(confirmed_alarms(scores, threshold, confirm_bars))
     return pd.concat(pieces), {"skipped_folds": skipped}

@@ -1,0 +1,230 @@
+{
+  "rule": {
+    "caught": 4,
+    "detection": [
+      0.3976353643835254,
+      1.0
+    ],
+    "false": 3,
+    "days": 153.17013888888889,
+    "false_rate": 0.5875818919592865,
+    "false_ci": [
+      0.12117351215782189,
+      1.7171636325476316
+    ],
+    "inspections": 8,
+    "blind_share": 0.23306054904449935
+  },
+  "reactions": [
+    {
+      "reaction": 0.0,
+      "saved": 82.9,
+      "ratio": 0.09650180940892641
+    },
+    {
+      "reaction": 2.0,
+      "saved": 74.9,
+      "ratio": 0.10680907877169558
+    },
+    {
+      "reaction": 4.0,
+      "saved": 67.4,
+      "ratio": 0.11869436201780414
+    },
+    {
+      "reaction": 8.0,
+      "saved": 57.983333333333334,
+      "ratio": 0.13797068123023856
+    }
+  ],
+  "models": [
+    {
+      "name": "Штатный сигнал LPS",
+      "caught": 3,
+      "inspections": 65,
+      "saved": 34.4,
+      "ratio": 1.8895348837209303,
+      "skipped": []
+    },
+    {
+      "name": "Правило: нагрузка за час",
+      "caught": 4,
+      "inspections": 8,
+      "saved": 67.4,
+      "ratio": 0.11869436201780414,
+      "skipped": []
+    },
+    {
+      "name": "Статистика: robust z",
+      "caught": 3,
+      "inspections": 7,
+      "saved": 49.56666666666666,
+      "ratio": 0.14122394082044384,
+      "skipped": []
+    },
+    {
+      "name": "Isolation Forest",
+      "caught": 3,
+      "inspections": 10,
+      "saved": 45.75,
+      "ratio": 0.2185792349726776,
+      "skipped": []
+    },
+    {
+      "name": "Логистическая регрессия",
+      "caught": 2,
+      "inspections": 16,
+      "saved": 49.416666666666664,
+      "ratio": 0.3237774030354132,
+      "skipped": [
+        "2020-04-01"
+      ]
+    }
+  ],
+  "sensitivity": [
+    {
+      "threshold": 0.7,
+      "confirm": "15 мин",
+      "caught": 4,
+      "delays_min": {
+        "1": 65.0,
+        "2": 40.0,
+        "3": 40.0,
+        "4": 10.0
+      },
+      "false": 9
+    },
+    {
+      "threshold": 0.7,
+      "confirm": "30 мин",
+      "caught": 4,
+      "delays_min": {
+        "1": 80.0,
+        "2": 55.0,
+        "3": 55.0,
+        "4": 25.0
+      },
+      "false": 6
+    },
+    {
+      "threshold": 0.7,
+      "confirm": "60 мин",
+      "caught": 4,
+      "delays_min": {
+        "1": 110.0,
+        "2": 85.0,
+        "3": 85.0,
+        "4": 55.0
+      },
+      "false": 4
+    },
+    {
+      "threshold": 0.8,
+      "confirm": "15 мин",
+      "caught": 4,
+      "delays_min": {
+        "1": 65.0,
+        "2": 45.0,
+        "3": 50.0,
+        "4": 25.0
+      },
+      "false": 6
+    },
+    {
+      "threshold": 0.8,
+      "confirm": "30 мин",
+      "caught": 4,
+      "delays_min": {
+        "1": 80.0,
+        "2": 60.0,
+        "3": 65.0,
+        "4": 40.0
+      },
+      "false": 5
+    },
+    {
+      "threshold": 0.8,
+      "confirm": "60 мин",
+      "caught": 4,
+      "delays_min": {
+        "1": 110.0,
+        "2": 90.0,
+        "3": 95.0,
+        "4": 70.0
+      },
+      "false": 3
+    },
+    {
+      "threshold": 0.9,
+      "confirm": "15 мин",
+      "caught": 4,
+      "delays_min": {
+        "1": 65.0,
+        "2": 50.0,
+        "3": 55.0,
+        "4": 45.0
+      },
+      "false": 5
+    },
+    {
+      "threshold": 0.9,
+      "confirm": "30 мин",
+      "caught": 4,
+      "delays_min": {
+        "1": 80.0,
+        "2": 65.0,
+        "3": 70.0,
+        "4": 60.0
+      },
+      "false": 3
+    },
+    {
+      "threshold": 0.9,
+      "confirm": "60 мин",
+      "caught": 4,
+      "delays_min": {
+        "1": 110.0,
+        "2": 95.0,
+        "3": 100.0,
+        "4": 90.0
+      },
+      "false": 3
+    },
+    {
+      "threshold": 0.95,
+      "confirm": "15 мин",
+      "caught": 4,
+      "delays_min": {
+        "1": 65.0,
+        "2": 55.0,
+        "3": 60.0,
+        "4": 60.0
+      },
+      "false": 4
+    },
+    {
+      "threshold": 0.95,
+      "confirm": "30 мин",
+      "caught": 4,
+      "delays_min": {
+        "1": 80.0,
+        "2": 70.0,
+        "3": 75.0,
+        "4": 75.0
+      },
+      "false": 3
+    },
+    {
+      "threshold": 0.95,
+      "confirm": "60 мин",
+      "caught": 4,
+      "delays_min": {
+        "1": 110.0,
+        "2": 100.0,
+        "3": 105.0,
+        "4": 105.0
+      },
+      "false": 3
+    }
+  ]
+}
